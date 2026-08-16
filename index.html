@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COMP4020 prototype</title>
+    <title>Phantom jams: traffic with no cause</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -13,11 +13,48 @@
       </nav>
     </header>
     <main>
-      <h1>COMP4020 prototype</h1>
-      <p data-testid="intro">
-        Replace this with your prototype. This week's brief is on the course website;
-        <code>spec/README.md</code> explains how the checks in this repo relate to it.
+      <h1>Phantom jams: traffic with no cause</h1>
+      <p class="intro">
+        Every car on this loop is only reacting to the gap in front of it — speed up when there's
+        room, slow down when there isn't. Nobody plans a jam. At low density traffic settles into a
+        smooth flow; push the car count up and a stop-and-go wave forms on its own, with nothing
+        scripting it.
       </p>
+
+      <div class="controls">
+        <div class="control">
+          <label for="car-count">Cars on the road: <output id="car-count-value">30</output></label>
+          <input
+            type="range"
+            id="car-count"
+            data-testid="car-count-slider"
+            min="5"
+            max="65"
+            step="1"
+            value="30"
+          />
+        </div>
+        <button type="button" id="brake-button" data-testid="brake-button">Brake a car</button>
+      </div>
+
+      <canvas
+        data-testid="road-canvas"
+        id="road-canvas"
+        width="600"
+        height="600"
+        aria-label="Circular road with cars coloured by speed, green is fast and red is stopped"
+      ></canvas>
+
+      <dl class="stats">
+        <div class="stat">
+          <dt>Average speed</dt>
+          <dd data-testid="avg-speed" id="avg-speed">—</dd>
+        </div>
+        <div class="stat">
+          <dt>Cars stopped</dt>
+          <dd data-testid="stopped-count" id="stopped-count">—</dd>
+        </div>
+      </dl>
     </main>
     <script type="module" src="./main.ts"></script>
   </body>
